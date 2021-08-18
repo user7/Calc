@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Calc</string>
+    <string name="b1_label">1</string>
+    <string name="b2_label">2</string>
+    <string name="b3_label">3</string>
+    <string name="b4_label">4</string>
+    <string name="b5_label">5</string>
+    <string name="b6_label">6</string>
+    <string name="b7_label">7</string>
+    <string name="b8_label">8</string>
+    <string name="b9_label">9</string>
+    <string name="b0_label">0</string>
+    <string name="bdot_label">.</string>
+    <string name="bplus_label">+</string>
+    <string name="bminus_label">-</string>
+    <string name="bmul_label">x</string>
+    <string name="bdiv_label">÷</string>
+    <string name="bequals_label">=</string>
+    <string name="bclear_label">C</string>
+</resources>
