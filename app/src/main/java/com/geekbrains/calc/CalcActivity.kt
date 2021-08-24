@@ -40,6 +40,8 @@ class CalcActivity : AppCompatActivity(), CalcView {
 
         setListener(R.id.bclear) { calcPresenter.handleClear() }
         setListener(R.id.bequals) { calcPresenter.handleEquals() }
+
+        calcPresenter.handleEquals() // чтобы дисплей обновился
     }
 
     override fun setCalcDisplay(text: String) {
