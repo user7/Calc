@@ -11,6 +11,21 @@
 
     <!-- + - * / = C -->
 
+    <TextView
+        android:id="@+id/calc_result_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnSpan="3"
+        android:layout_columnWeight="1"
+        android:background="#FFFFFF"
+        android:backgroundTintMode="screen"
+        android:fontFamily="monospace"
+        android:textAlignment="textEnd"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
     <Button
         android:id="@+id/bplus"
         android:layout_width="wrap_content"
