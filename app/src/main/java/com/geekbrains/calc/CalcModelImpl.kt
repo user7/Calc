@@ -2,6 +2,11 @@ package com.geekbrains.calc
 
 class CalcModelImpl : CalcModel {
     override fun binaryOp(a: Double, b: Double, op: CalcModel.Op): Double {
-        TODO("Not yet implemented")
+        return when (op) {
+            CalcModel.Op.ADD -> a + b
+            CalcModel.Op.SUB -> a - b
+            CalcModel.Op.MUL -> a * b
+            CalcModel.Op.DIV -> a / b
+        }
     }
 }
