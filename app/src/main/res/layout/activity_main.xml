@@ -27,7 +27,7 @@
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/bplus"
+        android:id="@+id/badd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
@@ -48,7 +48,7 @@
         android:text="@string/bequals_label" />
 
     <Button
-        android:id="@+id/bminus"
+        android:id="@+id/bsub"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
