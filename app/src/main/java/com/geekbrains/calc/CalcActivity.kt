@@ -1,6 +1,7 @@
 package com.geekbrains.calc
 
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.View
 import android.widget.Button
 import android.widget.GridLayout
@@ -41,7 +42,14 @@ class CalcActivity : AppCompatActivity(), CalcView {
         setListener(R.id.bclear) { calcPresenter.handleClear() }
         setListener(R.id.bequals) { calcPresenter.handleEquals() }
 
+        savedInstanceState?.let { calcPresenter.load(it) }
+
         calcPresenter.handleEquals() // чтобы дисплей обновился
+    }
+
+    override fun onSaveInstanceState(bundle: Bundle) {
+        super.onSaveInstanceState(bundle)
+        calcPresenter.save(bundle)
     }
 
     override fun setCalcDisplay(text: String) {

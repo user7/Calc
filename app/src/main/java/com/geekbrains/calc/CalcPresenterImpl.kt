@@ -1,22 +1,31 @@
 package com.geekbrains.calc
 
+import android.os.Bundle
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+private class PresenterState(
+    var currentUserInput: String = "",
+    var pendingOp: CalcModel.Op = CalcModel.Op.ADD,
+    var pendingValue: Double = 0.0,
+    var pendingValueSet: Boolean = false): Parcelable {
+}
+
 class CalcPresenterImpl(val view: CalcView, val model: CalcModel) : CalcPresenter {
-    var currentUserInput: String = ""
-    var pendingOp: CalcModel.Op = CalcModel.Op.ADD
-    var pendingValue: Double = 0.0
-    var pendingValueSet: Boolean = false
+    private var state: PresenterState = PresenterState()
 
     override fun handleDigit(d: Int) {
-        if (currentUserInput == "0")
-            currentUserInput = d.toString() // чтобы не возникало подряд идущих нулей в начале числа
+        if (state.currentUserInput == "0")
+            state.currentUserInput = d.toString() // чтобы не возникало подряд идущих нулей в начале числа
         else
-            currentUserInput += d.toString()
+            state.currentUserInput += d.toString()
         updateView()
     }
 
     override fun handleOp(op: CalcModel.Op) {
         computeMaybe()
-        pendingOp = op
+        state.pendingOp = op
         updateView()
     }
 
@@ -26,40 +35,49 @@ class CalcPresenterImpl(val view: CalcView, val model: CalcModel) : CalcPresente
     }
 
     override fun handleClear() {
-        currentUserInput = ""
-        pendingValueSet = false
+        state.currentUserInput = ""
+        state.pendingValueSet = false
         updateView()
     }
 
     override fun handleDot() {
-        if (!currentUserInput.contains("."))
-            currentUserInput += '.'
-        if (currentUserInput == ".")
-            currentUserInput = "0."
+        if (!state.currentUserInput.contains("."))
+            state.currentUserInput += '.'
+        if (state.currentUserInput == ".")
+            state.currentUserInput = "0."
         updateView()
     }
 
+    override fun save(bundle: Bundle) {
+        bundle.putParcelable("CalcPresenterImpl", state)
+    }
+
+    override fun load(bundle: Bundle) {
+        state = bundle.getParcelable<PresenterState>("CalcPresenterImpl")!!
+    }
+
     private fun updateView() {
-        if (!userEnteredNumber() && pendingValueSet) // пока не введено новое число, показываем результат прошлой операции
-            view.setCalcDisplay(pendingValue.toString().replace("\\.0$".toRegex(), ""))
+        if (!userEnteredNumber() && state.pendingValueSet) // пока не введено новое число, показываем результат прошлой операции
+            view.setCalcDisplay(state.pendingValue.toString().replace("\\.0$".toRegex(), ""))
         else
-            view.setCalcDisplay(if (userEnteredNumber()) currentUserInput else "0")
+            view.setCalcDisplay(if (userEnteredNumber()) state.currentUserInput else "0")
     }
 
     private fun userEnteredNumber(): Boolean {
-        return currentUserInput != ""
+        return state.currentUserInput != ""
     }
 
     private fun computeMaybe() {
         if (!userEnteredNumber())
             return
-        val cur = currentUserInput.toDouble()
-        if (!pendingValueSet) {
-            pendingValue = cur
+        val cur = state.currentUserInput.toDouble()
+        if (!state.pendingValueSet) {
+            state.pendingValue = cur
         } else {
-            pendingValue = model.binaryOp(pendingValue, cur, pendingOp)
+            state.pendingValue = model.binaryOp(state.pendingValue, cur, state.pendingOp)
         }
-        pendingValueSet = true
-        currentUserInput = ""
+        state.pendingValueSet = true
+        state.currentUserInput = ""
     }
+
 }
