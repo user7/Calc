@@ -9,9 +9,9 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class CalcActivity : AppCompatActivity(), CalcView {
-    val calcModel: CalcModel = CalcModelImpl()
-    val calcPresenter: CalcPresenter = CalcPresenterImpl(this, calcModel)
-    var displayView: TextView? = null
+    private val calcModel: CalcModel = CalcModelImpl()
+    private val calcPresenter: CalcPresenter = CalcPresenterImpl(this, calcModel)
+    private var displayView: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

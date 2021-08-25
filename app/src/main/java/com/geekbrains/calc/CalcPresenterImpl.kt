@@ -12,7 +12,7 @@ private class PresenterState(
     var pendingValueSet: Boolean = false): Parcelable {
 }
 
-class CalcPresenterImpl(val view: CalcView, val model: CalcModel) : CalcPresenter {
+class CalcPresenterImpl(private val view: CalcView, private val model: CalcModel) : CalcPresenter {
     private var state: PresenterState = PresenterState()
 
     override fun handleDigit(d: Int) {
