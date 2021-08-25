@@ -9,8 +9,7 @@ private class PresenterState(
     var currentUserInput: String = "",
     var pendingOp: CalcModel.Op = CalcModel.Op.ADD,
     var pendingValue: Double = 0.0,
-    var pendingValueSet: Boolean = false): Parcelable {
-}
+    var pendingValueSet: Boolean = false): Parcelable
 
 class CalcPresenterImpl(private val view: CalcView, private val model: CalcModel) : CalcPresenter {
     private var state: PresenterState = PresenterState()
