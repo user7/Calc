@@ -53,6 +53,6 @@ class CalcActivity : AppCompatActivity(), CalcView {
     }
 
     override fun setCalcDisplay(text: String) {
-        displayView!!.setText(text)
+        displayView?.text = text
     }
 }
