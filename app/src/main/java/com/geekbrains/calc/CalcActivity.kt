@@ -1,23 +1,32 @@
 package com.geekbrains.calc
 
+import android.os.Build
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.View
 import android.widget.Button
 import android.widget.GridLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import java.text.DecimalFormat
+import java.text.NumberFormat
 
 class CalcActivity : AppCompatActivity(), CalcView {
     private val calcModel: CalcModel = CalcModelImpl()
     private val calcPresenter: CalcPresenter = CalcPresenterImpl(this, calcModel)
     private var displayView: TextView? = null
+    private var sep: Char = '.'
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calc)
         findViewById<GridLayout>(R.id.grid).setBackgroundResource(R.drawable.bg)
         displayView = findViewById<TextView>(R.id.calc_display_view)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            val df = NumberFormat.getInstance() as? DecimalFormat
+            df?.let { sep = it.decimalFormatSymbols.decimalSeparator }
+            findViewById<Button>(R.id.bdot).text = "$sep"
+        }
 
         fun setListener(buttonId: Int, block: (View) -> Unit)
             = findViewById<Button>(buttonId)!!.setOnClickListener(block)
@@ -53,6 +62,8 @@ class CalcActivity : AppCompatActivity(), CalcView {
     }
 
     override fun setCalcDisplay(text: String) {
-        displayView?.text = text
+        // отображаем локальный сепаратор вместо точки
+        displayView?.text = text.replace('.', sep)
     }
+
 }

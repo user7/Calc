@@ -9,7 +9,8 @@ private class PresenterState(
     var currentUserInput: String = "",
     var pendingOp: CalcModel.Op = CalcModel.Op.ADD,
     var pendingValue: Double = 0.0,
-    var pendingValueSet: Boolean = false): Parcelable
+    var pendingValueSet: Boolean = false
+) : Parcelable
 
 class CalcPresenterImpl(private val view: CalcView, private val model: CalcModel) : CalcPresenter {
     private var state: PresenterState = PresenterState()
@@ -60,12 +61,18 @@ class CalcPresenterImpl(private val view: CalcView, private val model: CalcModel
     }
 
     private fun updateView() {
-        if (!userEnteredNumber() && state.pendingValueSet) {
-            // пока не введено новое число, показываем результат прошлой операции
-            view.setCalcDisplay(state.pendingValue.toString().replace("\\.0$".toRegex(), ""))
+        val text: String
+        if (userEnteredNumber()) {
+            // пользователь начал вводить новое число, показываем что он вводит
+            text = state.currentUserInput
+        } else if (state.pendingValueSet) {
+            // иначе показываем результат прошлой операции, если он есть
+            text = state.pendingValue.toString().replace("\\.0$".toRegex(), "")
         } else {
-            view.setCalcDisplay(if (userEnteredNumber()) state.currentUserInput else "0")
+            // иначе был сброс, показываем 0
+            text = "0"
         }
+        view.setCalcDisplay(text)
     }
 
     private fun userEnteredNumber(): Boolean {
