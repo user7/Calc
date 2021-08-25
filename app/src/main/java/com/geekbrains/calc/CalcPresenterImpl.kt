@@ -16,10 +16,12 @@ class CalcPresenterImpl(private val view: CalcView, private val model: CalcModel
     private var state: PresenterState = PresenterState()
 
     override fun handleDigit(d: Int) {
-        if (state.currentUserInput == "0")
-            state.currentUserInput = d.toString() // чтобы не возникало подряд идущих нулей в начале числа
-        else
+        if (state.currentUserInput == "0") {
+            state.currentUserInput =
+                d.toString() // чтобы не возникало подряд идущих нулей в начале числа
+        } else {
             state.currentUserInput += d.toString()
+        }
         updateView()
     }
 
@@ -41,10 +43,12 @@ class CalcPresenterImpl(private val view: CalcView, private val model: CalcModel
     }
 
     override fun handleDot() {
-        if (!state.currentUserInput.contains("."))
+        if (!state.currentUserInput.contains(".")) {
             state.currentUserInput += '.'
-        if (state.currentUserInput == ".")
+        }
+        if (state.currentUserInput == ".") {
             state.currentUserInput = "0."
+        }
         updateView()
     }
 
@@ -57,10 +61,12 @@ class CalcPresenterImpl(private val view: CalcView, private val model: CalcModel
     }
 
     private fun updateView() {
-        if (!userEnteredNumber() && state.pendingValueSet) // пока не введено новое число, показываем результат прошлой операции
+        if (!userEnteredNumber() && state.pendingValueSet) {
+            // пока не введено новое число, показываем результат прошлой операции
             view.setCalcDisplay(state.pendingValue.toString().replace("\\.0$".toRegex(), ""))
-        else
+        } else {
             view.setCalcDisplay(if (userEnteredNumber()) state.currentUserInput else "0")
+        }
     }
 
     private fun userEnteredNumber(): Boolean {
