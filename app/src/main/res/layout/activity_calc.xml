@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/grid"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -11,8 +11,23 @@
 
     <!-- + - * / = C -->
 
+    <TextView
+        android:id="@+id/calc_display_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnSpan="3"
+        android:layout_columnWeight="1"
+        android:background="#FFFFFF"
+        android:backgroundTintMode="screen"
+        android:fontFamily="monospace"
+        android:textAlignment="textEnd"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
     <Button
-        android:id="@+id/bplus"
+        android:id="@+id/badd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
@@ -33,7 +48,7 @@
         android:text="@string/bequals_label" />
 
     <Button
-        android:id="@+id/bminus"
+        android:id="@+id/bsub"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
@@ -133,4 +148,4 @@
         android:layout_columnWeight="1"
         android:text="@string/bdot_label" />
 
-</GridLayout>
+</android.widget.GridLayout>
