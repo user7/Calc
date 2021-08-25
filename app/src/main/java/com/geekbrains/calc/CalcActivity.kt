@@ -14,7 +14,7 @@ class CalcActivity : AppCompatActivity(), CalcView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_calc)
         findViewById<GridLayout>(R.id.grid).setBackgroundResource(R.drawable.bg)
         displayView = findViewById<TextView>(R.id.calc_display_view)
 
