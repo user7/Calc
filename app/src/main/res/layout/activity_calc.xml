@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/grid"
-    style="@style/CalcButton"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
@@ -14,61 +13,48 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/calc_display_view"
-        style="@style/CalcDisplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnSpan="3"
-        android:layout_columnWeight="1"
-        android:textAlignment="textEnd" />
+        android:layout_columnWeight="1" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/badd"
-        style="@style/CalcButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:text="@string/bplus_label"
-        android:textSize="@dimen/calc_button_font_size" />
+        android:text="@string/bplus_label" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bmul"
-        style="@style/CalcButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:text="@string/bmul_label"
-        android:textSize="@dimen/calc_button_font_size" />
+        android:text="@string/bmul_label" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bequals"
-        style="@style/CalcButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:text="@string/bequals_label"
-        android:textSize="@dimen/calc_button_font_size" />
+        android:text="@string/bequals_label" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bsub"
-        style="@style/CalcButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:text="@string/bminus_label"
-        android:textSize="@dimen/calc_button_font_size" />
+        android:text="@string/bminus_label" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bdiv"
-        style="@style/CalcButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:text="@string/bdiv_label"
-        android:textSize="@dimen/calc_button_font_size" />
+        android:text="@string/bdiv_label" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bclear"
-        style="@style/CalcButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
@@ -77,103 +63,81 @@
     <!-- 1-9 0 . -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/b1"
-        style="@style/CalcButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:text="@string/b1_label"
-        android:textSize="@dimen/calc_button_font_size" />
+        android:text="@string/b1_label" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/b2"
-        style="@style/CalcButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:text="@string/b2_label"
-        android:textSize="@dimen/calc_button_font_size" />
+        android:text="@string/b2_label" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/b3"
-        style="@style/CalcButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:text="@string/b3_label"
-        android:textSize="@dimen/calc_button_font_size" />
+        android:text="@string/b3_label" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/b4"
-        style="@style/CalcButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:text="@string/b4_label"
-        android:textSize="@dimen/calc_button_font_size" />
+        android:text="@string/b4_label" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/b5"
-        style="@style/CalcButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:text="@string/b5_label"
-        android:textSize="@dimen/calc_button_font_size" />
+        android:text="@string/b5_label" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/b6"
-        style="@style/CalcButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:text="@string/b6_label"
-        android:textSize="@dimen/calc_button_font_size" />
+        android:text="@string/b6_label" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/b7"
-        style="@style/CalcButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:text="@string/b7_label"
-        android:textSize="@dimen/calc_button_font_size" />
+        android:text="@string/b7_label" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/b8"
-        style="@style/CalcButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:text="@string/b8_label"
-        android:textSize="@dimen/calc_button_font_size" />
+        android:text="@string/b8_label" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/b9"
-        style="@style/CalcButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:text="@string/b9_label"
-        android:textSize="@dimen/calc_button_font_size" />
+        android:text="@string/b9_label" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/b0"
-        style="@style/CalcButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnSpan="2"
         android:layout_columnWeight="2"
-        android:text="@string/b0_label"
-        android:textSize="@dimen/calc_button_font_size" />
+        android:text="@string/b0_label" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bdot"
-        style="@style/CalcButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnSpan="1"
         android:layout_columnWeight="1"
-        android:text="@string/bdot_label"
-        android:textSize="@dimen/calc_button_font_size" />
+        android:text="@string/bdot_label" />
 
 </android.widget.GridLayout>
