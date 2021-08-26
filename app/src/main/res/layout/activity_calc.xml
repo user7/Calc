@@ -11,7 +11,7 @@
 
     <!-- + - * / = C -->
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/calc_display_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,42 +26,42 @@
         android:textSize="30sp"
         android:textStyle="bold" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/badd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
         android:text="@string/bplus_label" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/bmul"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
         android:text="@string/bmul_label" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/bequals"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
         android:text="@string/bequals_label" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/bsub"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
         android:text="@string/bminus_label" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/bdiv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
         android:text="@string/bdiv_label" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/bclear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -69,70 +69,70 @@
         android:text="@string/bclear_label" />
 
     <!-- 1-9 0 . -->
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/b1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
         android:text="@string/b1_label" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/b2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
         android:text="@string/b2_label" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/b3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
         android:text="@string/b3_label" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/b4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
         android:text="@string/b4_label" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/b5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
         android:text="@string/b5_label" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/b6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
         android:text="@string/b6_label" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/b7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
         android:text="@string/b7_label" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/b8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
         android:text="@string/b8_label" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/b9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
         android:text="@string/b9_label" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/b0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -140,7 +140,7 @@
         android:layout_columnWeight="2"
         android:text="@string/b0_label" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/bdot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
