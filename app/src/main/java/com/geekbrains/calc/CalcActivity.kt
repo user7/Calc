@@ -1,6 +1,5 @@
 package com.geekbrains.calc
 
-import android.content.res.Resources
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -16,9 +15,17 @@ class CalcActivity : AppCompatActivity(), CalcView {
     private val calcPresenter: CalcPresenter = CalcPresenterImpl(this, calcModel)
     private var displayView: TextView? = null
     private var sep: Char = '.'
+    private val themes: List<Int> = listOf(R.style.Theme_Calc, R.style.ThemeCalcPink)
+    private var currentTheme = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        savedInstanceState?.let { calcPresenter.load(it) }
+        rebuildUI()
+    }
+
+    private fun rebuildUI() {
+        setTheme(themes[currentTheme])
         setContentView(R.layout.activity_calc)
         findViewById<GridLayout>(R.id.grid).setBackgroundResource(R.drawable.bg)
         displayView = findViewById<TextView>(R.id.calc_display_view)
@@ -29,8 +36,8 @@ class CalcActivity : AppCompatActivity(), CalcView {
             findViewById<Button>(R.id.bdot).text = "$sep"
         }
 
-        fun setListener(buttonId: Int, block: (View) -> Unit)
-            = findViewById<Button>(buttonId)!!.setOnClickListener(block)
+        fun setListener(buttonId: Int, block: (View) -> Unit) =
+            findViewById<Button>(buttonId)!!.setOnClickListener(block)
 
         setListener(R.id.b0) { calcPresenter.handleDigit(0) }
         setListener(R.id.b1) { calcPresenter.handleDigit(1) }
@@ -52,9 +59,11 @@ class CalcActivity : AppCompatActivity(), CalcView {
         setListener(R.id.bclear) { calcPresenter.handleClear() }
         setListener(R.id.bequals) { calcPresenter.handleEquals() }
 
-        savedInstanceState?.let { calcPresenter.load(it) }
-
-        calcPresenter.handleEquals() // чтобы дисплей обновился
+        setListener(R.id.btheme) {
+            currentTheme = (currentTheme + 1) % themes.size
+            rebuildUI()
+            calcPresenter.updateView();
+        }
     }
 
     override fun onSaveInstanceState(bundle: Bundle) {

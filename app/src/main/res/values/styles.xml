@@ -7,6 +7,7 @@
         <item name="backgroundTint">@null</item>
         <item name="android:textColor">@color/dark</item>
         <item name="android:background">@color/bright</item>
+        <item name="android:layout_height">@dimen/calc_display_height</item>
     </style>
 
     <style name="CalcButton.Dark">
@@ -27,6 +28,7 @@
         <item name="android:fontFamily">monospace</item>
         <item name="backgroundTint">@null</item>
         <item name="android:textAlignment">textEnd</item>
+        <item name="android:height">@dimen/calc_display_height</item>
     </style>
 
     <style name="CalcDisplay.Dark">

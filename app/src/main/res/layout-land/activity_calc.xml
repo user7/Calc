@@ -143,4 +143,12 @@
         android:layout_columnWeight="1"
         android:text="@string/bequals_label" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_columnSpan="4"
+        android:text="@string/btheme_label" />
+
 </android.widget.GridLayout>
