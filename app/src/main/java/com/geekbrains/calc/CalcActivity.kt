@@ -32,6 +32,11 @@ class CalcActivity : AppCompatActivity(), CalcView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         savedInstanceState?.let { calcPresenter.load(it) }
+
+        if (intent != null) {
+            val data = intent.getStringExtra("data")
+            Log.d("==", "got intent data: $data")
+        }
         rebuildUI()
     }
 
