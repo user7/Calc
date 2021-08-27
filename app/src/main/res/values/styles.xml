@@ -14,6 +14,11 @@
         <item name="android:background">@color/dark</item>
     </style>
 
+    <style name="CalcButton.Pink">
+        <item name="android:textColor">@color/dark_pink</item>
+        <item name="android:background">@color/bright_pink</item>
+    </style>
+
     <style name="CalcDisplay" parent="Widget.MaterialComponents.TextView">
         <item name="android:textSize">@dimen/calc_display_font_size</item>
         <item name="android:textColor">@color/dark</item>
@@ -27,5 +32,10 @@
     <style name="CalcDisplay.Dark">
         <item name="android:textColor">@color/bright</item>
         <item name="android:background">@color/dark</item>
+    </style>
+
+    <style name="CalcDisplay.Pink">
+        <item name="android:textColor">@color/dark_pink</item>
+        <item name="android:background">@color/bright_pink</item>
     </style>
 </resources>
