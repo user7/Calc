@@ -1,14 +1,18 @@
 package com.geekbrains.calc
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.GridLayout
 import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import java.text.DecimalFormat
 import java.text.NumberFormat
+
 
 class CalcActivity : AppCompatActivity(), CalcView {
     private val calcModel: CalcModel = CalcModelImpl()
@@ -17,6 +21,13 @@ class CalcActivity : AppCompatActivity(), CalcView {
     private var sep: Char = '.'
     private val themes: List<Int> = listOf(R.style.Theme_Calc, R.style.ThemeCalcPink)
     private var currentTheme = 0
+    private val activityResultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            val x = it.data?.extras?.getInt("themeId")
+            Log.d("==", "got result: $x")
+            x?.let { currentTheme = x }
+            rebuildUI()
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,10 +36,10 @@ class CalcActivity : AppCompatActivity(), CalcView {
     }
 
     private fun rebuildUI() {
-        setTheme(themes[currentTheme])
+        setTheme(themes[currentTheme % themes.size])
         setContentView(R.layout.activity_calc)
         findViewById<GridLayout>(R.id.grid).setBackgroundResource(R.drawable.bg)
-        displayView = findViewById<TextView>(R.id.calc_display_view)
+        displayView = findViewById(R.id.calc_display_view)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             val df = NumberFormat.getInstance() as? DecimalFormat
@@ -60,9 +71,9 @@ class CalcActivity : AppCompatActivity(), CalcView {
         setListener(R.id.bequals) { calcPresenter.handleEquals() }
 
         setListener(R.id.btheme) {
-            currentTheme = (currentTheme + 1) % themes.size
-            rebuildUI()
-            calcPresenter.updateView();
+            val intent = Intent(this, SettingsActivity::class.java)
+            intent.putExtra("themeId", currentTheme)
+            activityResultLauncher.launch(intent)
         }
     }
 

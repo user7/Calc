@@ -18,4 +18,7 @@
     <string name="bequals_label" translatable="false">=</string>
     <string name="bclear_label" translatable="false">C</string>
     <string name="btheme_label">Swap theme</string>
+    <string name="theme1_name">Theme 1</string>
+    <string name="theme2_name">Theme 2</string>
+    <string name="settings_back_label">OK</string>
 </resources>
