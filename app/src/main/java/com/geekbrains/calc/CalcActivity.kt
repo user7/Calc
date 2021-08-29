@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import java.text.DecimalFormat
 import java.text.NumberFormat
 
+const val THEMEID: String = "themeId"
 
 class CalcActivity : AppCompatActivity(), CalcView {
     private val calcModel: CalcModel = CalcModelImpl()
@@ -23,7 +24,7 @@ class CalcActivity : AppCompatActivity(), CalcView {
     private var currentTheme = 0
     private val activityResultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            val x = it.data?.extras?.getInt("themeId")
+            val x = it.data?.extras?.getInt(THEMEID)
             Log.d("==", "got result: $x")
             x?.let { currentTheme = x }
             rebuildUI()
@@ -77,7 +78,7 @@ class CalcActivity : AppCompatActivity(), CalcView {
 
         setListener(R.id.btheme) {
             val intent = Intent(this, SettingsActivity::class.java)
-            intent.putExtra("themeId", currentTheme)
+            intent.putExtra(THEMEID, currentTheme)
             activityResultLauncher.launch(intent)
         }
     }

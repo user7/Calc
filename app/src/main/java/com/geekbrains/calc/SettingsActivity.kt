@@ -13,14 +13,14 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        intent.extras?.let { themeId = it.getInt("themeId") }
+        intent.extras?.let { themeId = it.getInt(THEMEID) }
         setContentView(R.layout.activity_settings)
         var rg = findViewById<RadioGroup>(R.id.radio_settings_group)
         findViewById<RadioButton>(R.id.radio_theme1).setOnClickListener { themeId = 0 }
         findViewById<RadioButton>(R.id.radio_theme2).setOnClickListener { themeId = 1 }
         rg.check(if (themeId == 0) R.id.radio_theme1 else R.id.radio_theme2)
         findViewById<MaterialButton>(R.id.settings_back).setOnClickListener {
-            setResult(Activity.RESULT_OK, Intent().apply { putExtra("themeId", themeId) })
+            setResult(Activity.RESULT_OK, Intent().apply { putExtra(THEMEID, themeId) })
             finish()
         }
     }
