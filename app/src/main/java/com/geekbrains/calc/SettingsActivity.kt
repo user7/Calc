@@ -20,9 +20,7 @@ class SettingsActivity : AppCompatActivity() {
         findViewById<RadioButton>(R.id.radio_theme2).setOnClickListener { themeId = 1 }
         rg.check(if (themeId == 0) R.id.radio_theme1 else R.id.radio_theme2)
         findViewById<MaterialButton>(R.id.settings_back).setOnClickListener {
-            val data = Intent()
-            data.putExtra("themeId", themeId)
-            setResult(Activity.RESULT_OK, data)
+            setResult(Activity.RESULT_OK, Intent().apply { putExtra("themeId", themeId) })
             finish()
         }
     }
