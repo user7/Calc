@@ -8,6 +8,7 @@ interface CalcPresenter {
     fun handleEquals()
     fun handleClear()
     fun handleDot()
+    fun updateView()
     fun save(bundle: Bundle)
     fun load(bundle: Bundle)
 }

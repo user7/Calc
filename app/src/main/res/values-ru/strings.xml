@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Калькулятор</string>
+    <string name="btheme_label">Сменить тему</string>
+    <string name="theme1_name">Тема 1</string>
+    <string name="theme2_name">Тема 2</string>
+    <string name="settings_back_label">ОК</string>
+</resources>

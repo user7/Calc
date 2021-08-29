@@ -60,7 +60,7 @@ class CalcPresenterImpl(private val view: CalcView, private val model: CalcModel
         state = bundle.getParcelable<PresenterState>("CalcPresenterImpl")!!
     }
 
-    private fun updateView() {
+    override fun updateView() {
         val text: String
         if (userEnteredNumber()) {
             // пользователь начал вводить новое число, показываем что он вводит

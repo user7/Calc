@@ -16,4 +16,9 @@
         <item name="android:textViewStyle">@style/CalcDisplay</item>
     </style>
 
+    <style name="ThemeCalcPink">
+        <item name="materialButtonStyle">@style/CalcButton.Pink</item>
+        <item name="android:textViewStyle">@style/CalcDisplay.Pink</item>
+    </style>
+
 </resources>

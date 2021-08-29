@@ -1,26 +1,51 @@
 package com.geekbrains.calc
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.GridLayout
 import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import java.text.DecimalFormat
 import java.text.NumberFormat
+
+const val THEMEID: String = "themeId"
 
 class CalcActivity : AppCompatActivity(), CalcView {
     private val calcModel: CalcModel = CalcModelImpl()
     private val calcPresenter: CalcPresenter = CalcPresenterImpl(this, calcModel)
     private var displayView: TextView? = null
     private var sep: Char = '.'
+    private val themes: List<Int> = listOf(R.style.Theme_Calc, R.style.ThemeCalcPink)
+    private var currentTheme = 0
+    private val activityResultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            val x = it.data?.extras?.getInt(THEMEID)
+            Log.d("==", "got result: $x")
+            x?.let { currentTheme = x }
+            rebuildUI()
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        savedInstanceState?.let { calcPresenter.load(it) }
+
+        if (intent != null) {
+            val data = intent.getStringExtra("data")
+            Log.d("==", "got intent data: $data")
+        }
+        rebuildUI()
+    }
+
+    private fun rebuildUI() {
+        setTheme(themes[currentTheme % themes.size])
         setContentView(R.layout.activity_calc)
         findViewById<GridLayout>(R.id.grid).setBackgroundResource(R.drawable.bg)
-        displayView = findViewById<TextView>(R.id.calc_display_view)
+        displayView = findViewById(R.id.calc_display_view)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             val df = NumberFormat.getInstance() as? DecimalFormat
@@ -28,8 +53,8 @@ class CalcActivity : AppCompatActivity(), CalcView {
             findViewById<Button>(R.id.bdot).text = "$sep"
         }
 
-        fun setListener(buttonId: Int, block: (View) -> Unit)
-            = findViewById<Button>(buttonId)!!.setOnClickListener(block)
+        fun setListener(buttonId: Int, block: (View) -> Unit) =
+            findViewById<Button>(buttonId)!!.setOnClickListener(block)
 
         setListener(R.id.b0) { calcPresenter.handleDigit(0) }
         setListener(R.id.b1) { calcPresenter.handleDigit(1) }
@@ -51,9 +76,11 @@ class CalcActivity : AppCompatActivity(), CalcView {
         setListener(R.id.bclear) { calcPresenter.handleClear() }
         setListener(R.id.bequals) { calcPresenter.handleEquals() }
 
-        savedInstanceState?.let { calcPresenter.load(it) }
-
-        calcPresenter.handleEquals() // чтобы дисплей обновился
+        setListener(R.id.btheme) {
+            val intent = Intent(this, SettingsActivity::class.java)
+            intent.putExtra(THEMEID, currentTheme)
+            activityResultLauncher.launch(intent)
+        }
     }
 
     override fun onSaveInstanceState(bundle: Bundle) {
