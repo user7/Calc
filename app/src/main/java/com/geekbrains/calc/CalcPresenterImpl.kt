@@ -57,20 +57,23 @@ class CalcPresenterImpl(private val view: CalcView, private val model: CalcModel
     }
 
     override fun load(bundle: Bundle) {
-        state = bundle.getParcelable<PresenterState>("CalcPresenterImpl")!!
+        state = bundle.getParcelable("CalcPresenterImpl")!!
     }
 
-    override fun updateView() {
-        val text: String
-        if (userEnteredNumber()) {
-            // пользователь начал вводить новое число, показываем что он вводит
-            text = state.currentUserInput
-        } else if (state.pendingValueSet) {
-            // иначе показываем результат прошлой операции, если он есть
-            text = state.pendingValue.toString().replace("\\.0$".toRegex(), "")
-        } else {
-            // иначе был сброс, показываем 0
-            text = "0"
+    private fun updateView() {
+        val text: String = when {
+            userEnteredNumber() -> {
+                // пользователь начал вводить новое число, показываем что он вводит
+                state.currentUserInput
+            }
+            state.pendingValueSet -> {
+                // иначе показываем результат прошлой операции, если он есть
+                state.pendingValue.toString().replace("\\.0$".toRegex(), "")
+            }
+            else -> {
+                // иначе был сброс, показываем 0
+                "0"
+            }
         }
         view.setCalcDisplay(text)
     }
