@@ -5,7 +5,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-private class PresenterState(
+class PresenterState(
     var currentUserInput: String = "",
     var pendingOp: CalcModel.Op = CalcModel.Op.ADD,
     var pendingValue: Double = 0.0,
