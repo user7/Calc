@@ -86,9 +86,9 @@ class TestPresenterImpl {
         presenter.save(bundle)
         verify(bundle).putParcelable(eq("CalcPresenterImpl"), any())
 
-        whenever(bundle.getParcelable<PresenterState>(eq("CalcPresenterImpl")))
+        whenever(bundle.getParcelable<PresenterState>("CalcPresenterImpl"))
             .thenReturn(PresenterState())
         presenter.load(bundle)
-        verify(bundle).getParcelable<PresenterState>(eq("CalcPresenterImpl"))
+        verify(bundle).getParcelable<PresenterState>("CalcPresenterImpl")
     }
 }
